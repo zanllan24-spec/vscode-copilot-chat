@@ -126,6 +126,26 @@ describe('GitHub API Validators', () => {
 			const result = vJobInfo().validate(invalidJobInfo);
 			expect(result.error).toBeDefined();
 		});
+
+		it('should validate job info without pull_request field', () => {
+			const validJobInfo = {
+				job_id: 'job-123',
+				session_id: 'session-456',
+				problem_statement: 'Fix the bug',
+				status: 'completed',
+				actor: {
+					id: 123,
+					login: 'testuser'
+				},
+				created_at: '2023-01-01T00:00:00Z',
+				updated_at: '2023-01-02T00:00:00Z'
+				// No pull_request field - should still be valid
+			};
+
+			const result = vJobInfo().validate(validJobInfo);
+			expect(result.error).toBeUndefined();
+			expect(result.content).toEqual(validJobInfo);
+		});
 	});
 
 	describe('vRemoteAgentJobResponse', () => {

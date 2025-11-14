@@ -41,7 +41,7 @@ export interface JobInfo {
 	};
 	created_at: string;
 	updated_at: string;
-	pull_request: {
+	pull_request?: {
 		id: number;
 		number: number;
 	};

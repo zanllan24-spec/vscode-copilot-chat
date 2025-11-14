@@ -37,10 +37,10 @@ export const vJobInfo = (): IValidator<JobInfo> => vObj({
 	actor: vRequired(vActor()),
 	created_at: vRequired(vString()),
 	updated_at: vRequired(vString()),
-	pull_request: vRequired(vObj({
+	pull_request: vObj({
 		id: vRequired(vNumber()),
 		number: vRequired(vNumber()),
-	})),
+	}),
 	workflow_run: vObj({
 		id: vRequired(vNumber()),
 	}),
